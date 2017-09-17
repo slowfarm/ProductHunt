@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import eva.android.com.producthunt.R;
+import eva.android.com.producthunt.helpers.StorageHelper;
 import eva.android.com.producthunt.models.Post;
-import eva.android.com.producthunt.models.ScreenshotUrl;
 
 
 public class PostDetailsActivity extends AppCompatActivity {
@@ -23,19 +23,13 @@ public class PostDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
 
+        Post post = StorageHelper.getInstance().getPostById(id);
+
         TextView name = findViewById(R.id.name);
         TextView description = findViewById(R.id.description);
         TextView voteCount = findViewById(R.id.vote_count);
         ImageView screenshot = findViewById(R.id.screenshot);
         Button getItBtn = findViewById(R.id.get_it_btn);
-
-        Post post = new Post();
-        post.setName("Name");
-        post.setTagline("description");
-        post.setVotesCount(32);
-        post.setScreenshotUrl(new ScreenshotUrl());
-        post.getScreenshotUrl().set850px("asdasd");
-        post.setRedirectUrl("http://www.google.com");
 
         name.setText(post.getName());
         description.setText(post.getTagline());

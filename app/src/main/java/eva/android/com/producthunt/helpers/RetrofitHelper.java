@@ -18,6 +18,20 @@ public class RetrofitHelper {
         return instance;
     }
 
+    public void getPosts(String accessToken) {
+        Application.getApi().getPosts(accessToken).enqueue(new Callback<HttpResponse>() {
+            @Override
+            public void onResponse(Call<HttpResponse> call, Response<HttpResponse> response) {
+                onPostsReceived.onResponse(response.body().getPosts());
+            }
+
+            @Override
+            public void onFailure(Call<HttpResponse> call, Throwable t) {
+                onPostsReceived.onFailure(t);
+            }
+        });
+    }
+
     public void setOnPostsReceived(OnPostsReceived onPostsReceived) {
         this.onPostsReceived = onPostsReceived;
     }

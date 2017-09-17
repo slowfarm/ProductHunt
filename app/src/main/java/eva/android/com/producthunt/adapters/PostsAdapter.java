@@ -24,6 +24,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         mPostList = postList;
     }
 
+    public void addAll(List<Post> postList) {
+        mPostList.clear();
+        mPostList.addAll(postList);
+        notifyDataSetChanged();
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.post_list_item, parent, false));
@@ -35,9 +41,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.description.setText(mPostList.get(position).getTagline());
         holder.voteCount.setText(String.valueOf(mPostList.get(position).getVotesCount()));
 
-//        Picasso.with(holder.itemView.getContext())
-//                .load(mPostList.get(position).getThumbnail().getImageUrl())
-//                .into(holder.thumbnail);
+        Picasso.with(holder.itemView.getContext())
+                .load(mPostList.get(position).getThumbnail().getImageUrl())
+                .into(holder.thumbnail);
     }
 
     @Override

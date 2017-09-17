@@ -7,14 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import eva.android.com.producthunt.R;
 import eva.android.com.producthunt.adapters.CategoryAdapter;
+import eva.android.com.producthunt.helpers.StorageHelper;
 import eva.android.com.producthunt.interfaces.OnItemClickListener;
-import eva.android.com.producthunt.models.Post;
-import eva.android.com.producthunt.models.Topic;
 
 public class CategoryDialog extends Dialog{
 
@@ -35,17 +31,7 @@ public class CategoryDialog extends Dialog{
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-        List<Topic> categoryList = new ArrayList<>();
-
-        Topic topic = new Topic();
-        topic.setName("Name");
-        topic.setId(3);
-        categoryList.add(topic);
-        categoryList.add(topic);
-        categoryList.add(topic);
-        categoryList.add(topic);
-        categoryList.add(topic);
-        CategoryAdapter adapter = new CategoryAdapter(categoryList);
+        CategoryAdapter adapter = new CategoryAdapter(StorageHelper.getInstance().getCategoryList());
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(onItemClickListener);
     }
