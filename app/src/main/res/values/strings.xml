@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProductHunt</string>
+    <string name="access_token">591f99547f569b05ba7d8777e2e0824eea16c440292cce1f8dfb3952cc9937ff</string>
+    <string name="get_it">Get it!</string>
+    <string name="tech">Tech</string>
+    <string name="no_connection">no connection</string>
 </resources>
