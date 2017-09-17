@@ -1,8 +1,8 @@
 package eva.android.com.producthunt.activities;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,7 +16,6 @@ import eva.android.com.producthunt.adapters.PostsAdapter;
 import eva.android.com.producthunt.dialog.CategoryDialog;
 import eva.android.com.producthunt.interfaces.OnItemClickListener;
 import eva.android.com.producthunt.models.Post;
-import retrofit2.http.POST;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, OnItemClickListener {
 
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     public void onItemClick(int id, String name) {
         Log.d("TAG", "onItemClick: " + id + "  " + name);
+        categoryName.setText(name);
         categoryDialog.dismiss();
     }
 }
